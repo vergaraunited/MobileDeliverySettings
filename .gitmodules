@@ -1,0 +1,3 @@
+[submodule "UMDGeneral"]
+	path = UMDGeneral
+	url = https://github.com/vergaraunited/UMDGeneral.git
