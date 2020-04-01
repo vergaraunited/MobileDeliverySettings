@@ -9,8 +9,11 @@ using UMDGeneral.Settings;
 
 namespace MobileDeliverySettings
 {
-    public class Settings : Notification, IMDMMessage
+    public static class Settings //: Notification, IMDMMessage
     {
+        //private Settings(){
+        //    if (settings == null) settings = new Settings();
+        //}
         static ISettings AppSettings
         {
             get
@@ -21,16 +24,21 @@ namespace MobileDeliverySettings
             }
         }
 
-        static Settings settings;
-        public static Settings Current
-        {
-            get { return settings ?? (settings = new Settings()); }
-        }
+        //static Settings settings;
+        //public static Settings Current()
+        //{
+        //    if (AppSettings != null) return AppSettings;
+        //    else
+        //    {
+        //        settings = new Settings();
+        //        return settings;
+        //    }
+        //}
 
-        public void ClearAll()
-        {
-            AppSettings.Clear();
-        }
+        //public void ClearAll()
+        //{
+        //    AppSettings.Clear();
+        //}
 
         #region Setting Constants
 
@@ -53,26 +61,48 @@ namespace MobileDeliverySettings
         private static readonly int WinsysPortDefault = 8181;
 
         private const string idUMDUrl = "UMDUrl";
-        private static readonly string UMDUrlDefault = GlobalSetting.Config.srvSet.umdurl;
+        private static readonly string UMDUrlDefault = "localhost";
 
         private const string idUMDPort = "UMDPort";
-        private static readonly int UMDPortDefault = GlobalSetting.Config.srvSet.umdport;
-       // private static readonly object GlobalSetting;
+        private static readonly int UMDPortDefault = 81;
+
+        private const string idSQLConn = "SQLConn";
+        private static readonly string SQLConnDefault = @"Data Source=WIN-50GP30FGO75,1433;Initial Catalog=Demodb;User ID=wtssa;Password=demol23";
+
+        private const string idAppName = "AppName";
+        private static readonly string AppNameDefault = "defaultAppName";
+
+        // private static readonly object GlobalSetting;
 
         #endregion
-        public string LogPath
+
+        public static string AppName
         {
             get
             {
-                return AppSettings.GetValueOrDefault(idLogLevel, LogPathDefault);
+                return AppSettings.GetValueOrDefault(idAppName, AppNameDefault);
             }
             set
             {
-                if (AppSettings.AddOrUpdateValue(idLogPath, value))
-                    OnPropertyChanged();
+                // if (
+                AppSettings.AddOrUpdateValue(idAppName, value); //)
+                                                                // OnPropertyChanged();
             }
         }
-        public string LogLevel
+        public static string LogPath
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(idLogPath, LogPathDefault);
+            }
+            set
+            {
+                // if (
+                AppSettings.AddOrUpdateValue(idLogPath, value); //)
+                   // OnPropertyChanged();
+            }
+        }
+        public static string LogLevel
         {
             get
             {
@@ -80,12 +110,12 @@ namespace MobileDeliverySettings
             }
             set
             {
-                if (AppSettings.AddOrUpdateValue(idLogLevel, value))
-                    OnPropertyChanged();
+
+                AppSettings.AddOrUpdateValue(idLogLevel, value);
             }
         }
 
-        public string Url
+        public static string Url
         {
             get
             {
@@ -93,11 +123,10 @@ namespace MobileDeliverySettings
             }
             set
             {
-                if(AppSettings.AddOrUpdateValue(idUrl, value))
-                    OnPropertyChanged();
+                AppSettings.AddOrUpdateValue(idUrl, value);
             }
         }
-        public int Port
+        public static int Port
         {
             get
             {
@@ -105,13 +134,12 @@ namespace MobileDeliverySettings
             }
             set
             {
-                if(AppSettings.AddOrUpdateValue(idPort, value))
-                    OnPropertyChanged();
+                AppSettings.AddOrUpdateValue(idPort, value);
             }
         }
 
 
-        public string WinsysUrl
+        public static string WinsysUrl
         {
             get
             {
@@ -119,12 +147,11 @@ namespace MobileDeliverySettings
             }
             set
             {
-                if(AppSettings.AddOrUpdateValue(idWinsysUrl, value))
-                    OnPropertyChanged();
+                AppSettings.AddOrUpdateValue(idWinsysUrl, value);
             }
         }
 
-        public int WinsysPort
+        public static int WinsysPort
         {
             get
             {
@@ -132,12 +159,11 @@ namespace MobileDeliverySettings
             }
             set
             {
-                if(AppSettings.AddOrUpdateValue(idWinsysPort, value))
-                    OnPropertyChanged();
+                AppSettings.AddOrUpdateValue(idWinsysPort, value);
             }
         }
 
-        public string UMDUrl
+        public static string UMDUrl
         {
             get
             {
@@ -145,12 +171,21 @@ namespace MobileDeliverySettings
             }
             set
             {
-                if(AppSettings.AddOrUpdateValue(idUMDUrl, value))
-                    OnPropertyChanged();
+                AppSettings.AddOrUpdateValue(idUMDUrl, value);
             }
         }
-
-        public int UMDPort
+        public static string SQLConn
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(idSQLConn, SQLConnDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(idSQLConn, value);
+            }
+        }
+        public static int UMDPort
         {
             get
             {
@@ -158,21 +193,24 @@ namespace MobileDeliverySettings
             }
             set
             {
-                if(AppSettings.AddOrUpdateValue(idUMDPort, value))
-                    OnPropertyChanged();
+                AppSettings.AddOrUpdateValue(idUMDPort, value);
             }
         }
 
-        public UMDAppConfig LoadConfig()
+        public static UMDAppConfig LoadConfig()
         {
+            ISettings set = Settings.AppSettings;
+
             return new UMDAppConfig()
             {
                 AppName = "",
-                LogLevel = (LogLevel)Enum.Parse(typeof(LogLevel), Settings.Current.LogLevel),
-                LogPath = Settings.Current.LogPath
+                LogLevel = (LogLevel)Enum.Parse(typeof(LogLevel), Settings.LogLevel),
+                LogPath = set.GetValueOrDefault("LogPath",Settings.LogPath),
+                SQLConn  = SQLConn,
+               //  Version = 
             };
         }
-        public MsgTypes.eCommand Command { get; set; }
-        public Guid RequestId { get; set; }
+        public static MsgTypes.eCommand Command { get; set; }
+        public static Guid RequestId { get; set; }
     }
 }
