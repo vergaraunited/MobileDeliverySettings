@@ -2,10 +2,10 @@
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 using System;
-using UMDGeneral.Definitions;
-using UMDGeneral.Events;
-using UMDGeneral.Interfaces.DataInterfaces;
-using UMDGeneral.Settings;
+using MobileDeliveryGeneral.Definitions;
+using MobileDeliveryGeneral.Events;
+using MobileDeliveryGeneral.Interfaces.DataInterfaces;
+using MobileDeliveryGeneral.Settings;
 
 namespace MobileDeliverySettings
 {
