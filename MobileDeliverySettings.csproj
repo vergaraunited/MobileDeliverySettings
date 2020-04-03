@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.4.1</Version>
+    <Version>1.4.2</Version>
     <PackageReleaseNotes>Autogen nupkg
 with Symbols</PackageReleaseNotes>
     <Description>Centralized settings.</Description>
@@ -15,7 +15,7 @@ with Symbols</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MobileDeliveryGeneral" Version="1.4.0" />
+    <PackageReference Include="MobileDeliveryGeneral" Version="1.4.1" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
   </ItemGroup>
   
