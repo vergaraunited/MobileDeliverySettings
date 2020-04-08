@@ -1,7 +1,7 @@
 # MobileDeliverySettings ![MobileDeliveryLogger Nuget Versions (UMDNuget Artifacts)][logo]
 ## [v1.4.4](https://dev.azure.com/unitedwindowmfg/United%20Mobile%20Delivery/_packaging?_a=package&feed=UMDNuget&package=MobileDeliverySettings&protocolType=NuGet&version=1.4.3)
 
-[logo]: https://github.com/vergaraunited/Docs/blob/master/imgs/png/settings_icon.png (https://dev.azure.com/unitedwindowmfg/United%20Mobile%20Delivery/_packaging?_a=package&feed=UMDNuget&package=MobileDeliverySettings&protocolType=NuGet&version=1.4.4&view=overview 
+[logo]: https://github.com/vergaraunited/Docs/blob/master/imgs/png/settings_icon.png (https://dev.azure.com/unitedwindowmfg/United%20Mobile%20Delivery/_packaging?_a=package&feed=UMDNuget&package=MobileDeliverySettings&protocolType=NuGet&version=1.4.4&view=versions) 
 
 
 United Mobile Delivery Settings - standardized cross-platform settings library sub module shared amongst UMD Projects.
