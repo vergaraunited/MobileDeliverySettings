@@ -2,10 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.4.4</Version>
-    <PackageReleaseNotes>v1.4.4 - MobileDevlierySettings updated to General 1.4.4
-Autogen nupkg with Symbols
-SQLConn General settings fix, this should be in the settings class not in General.  Have to rebuild all the packages for a small fix.</PackageReleaseNotes>
+    <Version>1.5.1</Version>
+    <PackageReleaseNotes>1.5.1</PackageReleaseNotes>
     <Description>Centralized settings.</Description>
     <PackageIconUrl>https://unitedwindowmfg.com/wp-content/uploads/2017/02/New-Logo-4.png</PackageIconUrl>
     <RepositoryUrl>https://guthub.com/vergaraunited/MobileDeliverySettings.git</RepositoryUrl>
@@ -13,12 +11,12 @@ SQLConn General settings fix, this should be in the settings class not in Genera
     <PackageTags>MobileDelivery Settings UMD</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
-    <AssemblyVersion>1.4.4.0</AssemblyVersion>
-    <FileVersion>1.4.4.0</FileVersion>
+    <AssemblyVersion>1.5.1.0</AssemblyVersion>
+    <FileVersion>1.5.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MobileDeliveryGeneral" Version="1.4.4" />
+    <PackageReference Include="MobileDeliveryGeneral" Version="1.5.2" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
   </ItemGroup>
   
