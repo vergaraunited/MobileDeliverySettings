@@ -66,6 +66,19 @@ namespace MobileDeliverySettings
         private const string idUMDPort = "UMDPort";
         private static readonly int UMDPortDefault = 81;
 
+        //SQLLite Cache Paths
+        private const string idTruckCachePath = "TruckCachePath";
+        private static readonly string TruckCachePathDefault = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\UMDDB_Trucks.db3";
+
+        private const string idOrderCachePath = "OrderCachePath";
+        private static readonly string OrderCachePathDefault = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\UMDDB_Orders.db3";
+
+        private const string idStopCachePath = "StopCachePath";
+        private static readonly string StopCachePathDefault = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\UMDDB_Stops.db3";
+
+        private const string idOrderDetailCachePath = "OrderDetailCachePath";
+        private static readonly string OrderDetailCachePathDefault = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\UMDDB_OrderDetails.db3";
+
         private const string idSQLConn = "SQLConn";
         private static readonly string SQLConnDefault = @"Data Source=WIN-50GP30FGO75,1433;Initial Catalog=Demodb;User ID=wtssa;Password=demol23";
 
@@ -196,6 +209,56 @@ namespace MobileDeliverySettings
                 AppSettings.AddOrUpdateValue(idUMDPort, value);
             }
         }
+
+
+        
+            public static string TruckCachePath
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(idTruckCachePath, TruckCachePathDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(idTruckCachePath, value);
+            }
+        }
+
+        public static string OrderCachePath
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(idOrderCachePath, OrderCachePathDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(idOrderCachePath, value);
+            }
+        }
+        public static string StopCachePath
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(idStopCachePath, StopCachePathDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(idStopCachePath, value);
+            }
+        }
+
+        public static string OrderDetailCachePath
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(idOrderDetailCachePath, OrderDetailCachePathDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(idOrderDetailCachePath, value);
+            }
+        }
+
 
         public static UMDAppConfig LoadConfig()
         {

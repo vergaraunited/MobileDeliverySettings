@@ -9,18 +9,17 @@
     <RepositoryUrl>https://guthub.com/vergaraunited/MobileDeliverySettings.git</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>MobileDelivery Settings UMD</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
     <AssemblyVersion>1.5.1.0</AssemblyVersion>
     <FileVersion>1.5.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MobileDeliveryGeneral" Version="1.5.2" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
   </ItemGroup>
-  
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="nuget restore $(ProjectPath)" />
-  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MobileDeliveryGeneral\MobileDeliveryGeneral.csproj" />
+  </ItemGroup>
 </Project>
