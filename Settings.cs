@@ -3,13 +3,11 @@ using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 using System;
 using MobileDeliveryGeneral.Definitions;
-using MobileDeliveryGeneral.Events;
-using MobileDeliveryGeneral.Interfaces.DataInterfaces;
-using MobileDeliveryGeneral.Settings;
+using MobileDeliverySettings.Settings;
 
 namespace MobileDeliverySettings
 {
-    public static class Settings //: Notification, IMDMMessage
+    public static class SettingsAPI
     {
         //private Settings(){
         //    if (settings == null) settings = new Settings();
@@ -79,11 +77,26 @@ namespace MobileDeliverySettings
         private const string idOrderDetailCachePath = "OrderDetailCachePath";
         private static readonly string OrderDetailCachePathDefault = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\UMDDB_OrderDetails.db3";
 
+        private const string idOrderOptionCachePath = "OrderOptionCachePath";
+        private static readonly string OrderOptionCachePathDefault = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\UMDDB_OrderOptions.db3";
+
         private const string idSQLConn = "SQLConn";
         private static readonly string SQLConnDefault = @"Data Source=WIN-50GP30FGO75,1433;Initial Catalog=Demodb;User ID=wtssa;Password=demol23";
 
         private const string idAppName = "AppName";
         private static readonly string AppNameDefault = "defaultAppName";
+
+        private const string idKeepAlive = "KeepAlive";
+        private static readonly int KeepAliveDefault = 60000;
+
+        private const string idRetry = "Retry";
+        private static readonly int RetryDefault = 60000;
+
+        private const string idReconTimeout = "ReconTimeout";
+        private static readonly int ReconTimeoutDefault = 60000;
+
+        private const string idErrReconTimeout = "ErrReconTimeout";
+        private static readonly int ErrReconTimeoutDefault = 60000;
 
         // private static readonly object GlobalSetting;
 
@@ -258,17 +271,74 @@ namespace MobileDeliverySettings
                 AppSettings.AddOrUpdateValue(idOrderDetailCachePath, value);
             }
         }
+        public static string OrderOptionCachePath
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(idOrderOptionCachePath, OrderOptionCachePathDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(idOrderOptionCachePath, value);
+            }
+        }
 
+        public static int KeepAlive {
+            get
+            {
+                return AppSettings.GetValueOrDefault(idKeepAlive, KeepAliveDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(idKeepAlive, value);
+            }
+        }
+        public static int Retry
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(idRetry, RetryDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(idRetry, value);
+            }
+        }
+
+        //get { return SettingsAPI.OrderCachePath; } set { SettingsAPI.OrderCachePath = value; OnPropertyChanged("OrderCachePath"); } }
+
+        public static int ReconTimeout {
+            get
+            {
+                return AppSettings.GetValueOrDefault(idReconTimeout, ReconTimeoutDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(idReconTimeout, value);
+            }
+        }
+
+        public static int ErrReconTimeout
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(idErrReconTimeout, ErrReconTimeoutDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(idErrReconTimeout, value);
+            }
+        }
 
         public static UMDAppConfig LoadConfig()
         {
-            ISettings set = Settings.AppSettings;
+            ISettings set = SettingsAPI.AppSettings;
 
             return new UMDAppConfig()
             {
                 AppName = "",
-                LogLevel = (LogLevel)Enum.Parse(typeof(LogLevel), Settings.LogLevel),
-                LogPath = set.GetValueOrDefault("LogPath",Settings.LogPath),
+                LogLevel = (LogLevel)Enum.Parse(typeof(LogLevel), SettingsAPI.LogLevel),
+                LogPath = set.GetValueOrDefault("LogPath", SettingsAPI.LogPath),
                 SQLConn  = SQLConn,
                //  Version = 
             };
