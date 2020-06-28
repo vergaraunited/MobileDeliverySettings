@@ -41,19 +41,19 @@ namespace MobileDeliverySettings
         #region Setting Constants
 
         private const string idLogPath = "LogPath";
-        private static readonly string LogPathDefault = string.Empty;
+        private static readonly string LogPathDefault = @"C:\apps\log\";
 
         private const string idLogLevel = "LogLevel";
-        private static readonly string LogLevelDefault = string.Empty;
+        private static readonly string LogLevelDefault = "Info";
 
         private const string idUrl = "Url";
-        private static readonly string UrlDefault = string.Empty;
+        private static readonly string UrlDefault = "localhost";
 
         private const string idPort = "Port";
-        private static readonly int PortDefault = 0;
+        private static readonly int PortDefault = 81;
 
         private const string idWinsysUrl = "WinsysUrl";
-        private static readonly string WinsysUrlDefault = string.Empty;
+        private static readonly string WinsysUrlDefault = "localhost";
 
         private const string idWinsysPort = "WinsysPort";
         private static readonly int WinsysPortDefault = 8181;
